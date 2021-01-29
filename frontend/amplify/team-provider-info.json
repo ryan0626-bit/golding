@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-goldingroofs-dev-144718-authRole",
+      "UnauthRoleArn": "arn:aws:iam::130303853531:role/amplify-goldingroofs-dev-144718-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::130303853531:role/amplify-goldingroofs-dev-144718-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-goldingroofs-dev-144718-deployment",
+      "UnauthRoleName": "amplify-goldingroofs-dev-144718-unauthRole",
+      "StackName": "amplify-goldingroofs-dev-144718",
+      "StackId": "arn:aws:cloudformation:us-east-1:130303853531:stack/amplify-goldingroofs-dev-144718/cdd47380-626a-11eb-8dfd-0aff04b5e65f",
+      "AmplifyAppId": "d3ojoq0luuszji"
+    }
+  }
+}
