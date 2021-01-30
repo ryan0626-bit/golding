@@ -1,0 +1,27 @@
+service: golding
+frameworkVersion: '2'
+custom:
+  webpack:
+    webpackConfig: './webpack.config.js'
+    includeModuels: true
+provider:
+  name: aws
+  runtime: nodejs12.x
+  iamRoleStatments:
+    - Effect: 'Allow'
+      Action:
+        - 'dynamodb:*'
+      Resource: '*'
+
+functions:
+  createUserItem:
+    handler: index.createRequest
+    events:
+      - http:
+          path: /request
+          method: post
+          cors: true
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
