@@ -49,6 +49,7 @@ const useStyles = makeStyles(theme => ({
       borderRadius: '30px!important',
     },
     flexShrink: 0,
+    color: 'white',
   },
 }))
 
@@ -78,7 +79,7 @@ export default function Intro() {
 
       <Button
         size="large"
-        classes={classes.projectsButton}
+        className={classes.projectsButton}
         variant="contained"
         color="primary"
         onClick={handleCallUs}

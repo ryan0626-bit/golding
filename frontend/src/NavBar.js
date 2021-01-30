@@ -44,9 +44,18 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       display: 'none',
     },
+    marginRight: '2rem',
   },
   route: {
-    padding: '1.7rem',
+    color: 'white',
+    padding: '.25rem 1rem .25rem 1rem',
+    margin: '1rem',
+    borderRadius: '2rem',
+    // fontSize: theme.typography.pxToRem(20),
+    '&:hover': {
+      cursor: 'pointer',
+      backgroundColor: theme.palette.primary.main,
+    },
   },
 }))
 
@@ -67,15 +76,21 @@ export default function NavBar() {
   }
 
   return (
-    <Paper className={clsx(classes.paper, classes.ryansNav)}>
+    <div className={clsx(classes.paper, classes.ryansNav)}>
       <div>
         <Typography variant="h4">Company Logo</Typography>
       </div>
       <div style={{ flexGrow: 1 }} />
       <div className={classes.bigScreen}>
-        <div className={classes.route}>Profile</div>
-        <div className={classes.route}>My account</div>
-        <div className={classes.route}>About</div>
+        <Typography variant="h6" className={classes.route} onClick={() => openPage('profile')}>
+          Profile
+        </Typography>
+        <Typography variant="h6" className={classes.route} onClick={() => openPage('account')}>
+          My account
+        </Typography>
+        <Typography variant="h6" className={classes.route} onClick={() => openPage('about')}>
+          About
+        </Typography>
       </div>
       <div className={classes.smallScreen}>
         <div className={classes.navButton}>
@@ -96,6 +111,6 @@ export default function NavBar() {
           <MenuItem onClick={() => openPage('about')}>About</MenuItem>
         </Menu>
       </div>
-    </Paper>
+    </div>
   )
 }

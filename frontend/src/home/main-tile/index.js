@@ -3,6 +3,7 @@ import { React } from 'react'
 import HomeRoof from '../../images/HomeRoof.jpg'
 import Intro from './Intro'
 import Request from './Request'
+import NavBar from '../../NavBar'
 
 const useStyles = makeStyles(theme => ({
   background: {
@@ -26,6 +27,11 @@ const useStyles = makeStyles(theme => ({
     position: 'absolute',
     background: 'linear-gradient(to right, rgba(0, 0, 0, .6), rgba(255,0,0,0))',
     zIndex: 1,
+  },
+  navBar: {
+    zIndex: 2,
+    flexGrow: 1,
+    flexBasis: '100%',
   },
   intro: {
     zIndex: 2,
@@ -71,6 +77,9 @@ export default function Index() {
   return (
     <div className={classes.background}>
       <div className={classes.backgroundOverlay} />
+      <div className={classes.navBar}>
+        <NavBar />
+      </div>
       <div className={classes.intro}>
         <Intro />
       </div>

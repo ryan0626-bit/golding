@@ -99,7 +99,7 @@ const mixins = {
 }
 
 const typography = {
-  fontFamily: '"Montserrat", Roboto, tahoma, sans-serif',
+  fontFamily: '"Arial", Roboto, tahoma, sans-serif',
   default: {
     color: palette.secondary.main,
   },
@@ -141,6 +141,11 @@ const theme = createMuiTheme({
       },
       root: {
         borderRadius: 20,
+        padding: '0.5em 0.75em',
+        fontWeight: 'bold',
+        color: 'white',
+        // lineHeight: 1,
+        boxShadow: '0px 0px 0.25em #0002 inset, -2px 2px 0.25em #0004',
       },
     },
     MuiBadge: {
