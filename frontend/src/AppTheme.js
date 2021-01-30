@@ -2,7 +2,7 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 import React from 'react'
 
 const palette = {
-  //  type: 'dark',
+  // type: '',
   background: {
     // default: '#121212',
     // main: '#121212',
@@ -12,9 +12,9 @@ const palette = {
     // seeThrough: 'rgba(0, 0, 0, 0.5)',
   },
   primary: {
-    main: '#03adee',
+    main: 'rgb(225, 171, 31)',
     light: '#4eccfd',
-    dark: '#015b7e',
+    dark: 'rgb(186, 143, 30)',
   },
   secondary: {
     main: '#ab3131',

@@ -29,6 +29,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     paddingBottom: '',
   },
+  submit: {},
 }))
 
 export default function App() {
@@ -97,7 +98,9 @@ export default function App() {
         <MenuItem value={'repair'}>Repair Roof</MenuItem>
       </Select>
 
-      <Button onClick={handleSubmit}>Submit Now!</Button>
+      <Button color="primary" variant="contained" className={classes.submit} onClick={handleSubmit}>
+        Submit Now!
+      </Button>
     </div>
   )
 }
