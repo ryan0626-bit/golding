@@ -21,7 +21,9 @@ const useStyles = makeStyles(theme => ({
     color: 'white',
     fontWeight: 'bold',
   },
-  intro: {
+  root: {
+    margin: '3rem',
+    flexShrink: 1,
     display: 'flex',
     flexDirection: 'column',
 
@@ -62,7 +64,7 @@ export default function Intro() {
     // window.open(objectUrl);
   }
   return (
-    <div className={classes.intro}>
+    <div className={classes.root}>
       <div>
         <div>
           <Typography>LICENSE #123456</Typography>

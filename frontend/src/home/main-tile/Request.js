@@ -6,13 +6,14 @@ import TextField from '@material-ui/core/TextField'
 import { React, useState } from 'react'
 
 const useStyles = makeStyles(theme => ({
-  contactBox: {
+  root: {
     [theme.breakpoints.up('sm')]: {
       marginRight: '3rem',
     },
     display: 'flex',
     flexDirection: 'column',
     padding: '2rem',
+    flexGrow: 1,
     justifyContent: 'space-around',
     border: `1px ${theme.palette.grey.main} solid`,
     borderRadius: '3rem',
@@ -50,7 +51,7 @@ export default function App() {
   }
 
   return (
-    <div className={classes.contactBox}>
+    <div className={classes.root}>
       <div className={classes.estimate}>
         <Typography variant="h4">Get An Estimate</Typography>
         <div>

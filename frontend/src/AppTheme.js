@@ -1,5 +1,5 @@
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import React from 'react';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import React from 'react'
 
 const palette = {
   //  type: 'dark',
@@ -60,24 +60,24 @@ const palette = {
     light: '#166B8B',
     dark: '#2A2A2A',
   },
-};
+}
 
 const mixins = {
-  shadow: (dist) => {
-    dist = dist ?? 2;
+  shadow: dist => {
+    dist = dist ?? 2
     return {
       boxShadow: `-${dist}px ${dist}px ${dist * 3}px #000d`,
-    };
+    }
   },
-  borderRadius: (radius) => {
-    radius = radius ?? 4;
+  borderRadius: radius => {
+    radius = radius ?? 4
     return {
       borderRadius: `${radius}px`,
-    };
+    }
   },
   circleHover: (radius, color) => {
-    color = color ?? palette.primary.main;
-    radius = radius ?? '0.5rem';
+    color = color ?? palette.primary.main
+    radius = radius ?? '0.5rem'
 
     return {
       '&::before': {
@@ -94,55 +94,20 @@ const mixins = {
       '&:hover::before': {
         backgroundColor: color || palette.primary.main,
       },
-    };
+    }
   },
-};
+}
 
 const typography = {
   fontFamily: '"Montserrat", Roboto, tahoma, sans-serif',
   default: {
     color: palette.secondary.main,
   },
-};
-
-const breakpoints = {
-  values: {
-    xs: 0,
-    sm: 600,
-    md: 960,
-    lg: 1280,
-    xl: 1920,
-    mobile: 1025,
-  },
-  portrait: '@media (orientation: portrait)',
-  landscape: '@media (orientation: landscape)',
-  get down() {
-    return (key) => `@media (max-width:${this.values[key] - 0.5}px)`;
-  },
-  get up() {
-    return (key) => `@media (min-width:${this.values[key] + 0.5}px)`;
-  },
-  get downWithLandscape() {
-    return (key) => `@media (max-width:${this.values[key] - 0.5}px) and (orientation: landscape)`;
-  },
-  get upWithLandscape() {
-    return (key) => `@media (min-width:${this.values[key] + 0.5}px) and (orientation: landscape)`;
-  },
-  get downWithPortrait() {
-    return (key) => `@media (max-width:${this.values[key] - 0.5}px) and (orientation: portrait)`;
-  },
-  get upWithPortrait() {
-    return (key) => `@media (min-width:${this.values[key] + 0.5}px) and (orientation: portrait)`;
-  },
-  get between() {
-    return (keyA, keyB) => `@media (min-width:${this.values[keyA]}px) and (max-width:${this.values[keyB] - 0.5}px)`;
-  },
-};
+}
 
 const theme = createMuiTheme({
   typography,
   palette,
-  breakpoints,
   overrides: {
     MuiInputBase: {
       // letterSpacing: '1px',
@@ -174,9 +139,9 @@ const theme = createMuiTheme({
         lineHeight: 1,
         boxShadow: '0px 0px 0.25em #0002 inset, -2px 2px 0.25em #0004',
       },
-      root:{
-          borderRadius:20
-      }
+      root: {
+        borderRadius: 20,
+      },
     },
     MuiBadge: {
       colorPrimary: {
@@ -240,8 +205,8 @@ const theme = createMuiTheme({
     brandingHeight: 6, // rem units
     gutter: '1.5rem',
   },
-});
+})
 
 export default function AppTheme({ children }) {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>
 }

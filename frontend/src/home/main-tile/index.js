@@ -1,18 +1,10 @@
-import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import { React } from 'react'
-import HomeRoof from '../images/HomeRoof.jpg'
-import Icons from './Icons'
-import MainTile from './main-tile'
-import Skills from './Skills'
+import HomeRoof from '../../images/HomeRoof.jpg'
+import Intro from './Intro'
+import Request from './Request'
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  icons: {
-    backgroundColor: theme.palette.primary.main,
-  },
   background: {
     backgroundImage: `url(${HomeRoof})`,
     // backgroundSize: '100% 100vh',
@@ -74,21 +66,18 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function App() {
+export default function Index() {
   const classes = useStyles()
   return (
-    <div className={classes.root}>
-      <Grid container direction="row" justify="center" alignItems="flex-start" spacing={0}>
-        <Grid container item xs={12} spacing={0}>
-          <MainTile />
-        </Grid>
-        <Grid item xs={12} className={classes.icons}>
-          <Icons />
-        </Grid>
-        <Grid item xs={12}>
-          <Skills />
-        </Grid>
-      </Grid>
+    <div className={classes.background}>
+      <div className={classes.backgroundOverlay} />
+      <div className={classes.intro}>
+        <Intro />
+      </div>
+      <div className={classes.spacing} />
+      <div className={classes.request}>
+        <Request />
+      </div>
     </div>
   )
 }
