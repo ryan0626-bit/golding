@@ -8,6 +8,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import clsx from 'clsx'
 import { useHistory } from 'react-router-dom'
 import React from 'react'
+import useAtTop from './hooks/useAtTop'
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -17,12 +18,22 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary,
     flexGrow: 1,
   },
+  company: ({ atTop }) => ({
+    // padding: '1rem',
+    color: atTop ? theme.palette.primary.main : 'white',
+    fontWeight: 'bold',
+    margin: '1rem 1rem 1rem 3rem',
+    '&:hover': {
+      cursor: 'pointer',
+    },
+  }),
 
-  ryansNav: {
+  root: {
     flexDirection: 'row',
     display: 'flex',
-    justifyContent: 'space-around',
-    alignItems: 'ceenter',
+    marginTop: '1rem',
+    // justifyContent: 'space-around',
+    // alignItems: 'flex-start',
   },
   navButton: {
     '&:hover': {
@@ -46,23 +57,24 @@ const useStyles = makeStyles(theme => ({
     },
     marginRight: '2rem',
   },
-  route: {
+  route: ({ atTop }) => ({
     color: 'white',
     padding: '.25rem 1rem .25rem 1rem',
     margin: '1rem',
     borderRadius: '2rem',
-    // fontSize: theme.typography.pxToRem(20),
     '&:hover': {
       cursor: 'pointer',
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: atTop ? theme.palette.primary.main : 'white',
+      color: atTop ? 'white' : theme.palette.primary.main,
     },
-  },
+  }),
 }))
 
 export default function NavBar() {
-  const classes = useStyles()
   const history = useHistory()
   const [anchorEl, setAnchorEl] = React.useState(null)
+  const atTop = useAtTop()
+  const classes = useStyles({ atTop })
 
   const handleClose = () => {
     setAnchorEl(null)
@@ -76,10 +88,11 @@ export default function NavBar() {
   }
 
   return (
-    <div className={clsx(classes.paper, classes.ryansNav)}>
-      <div>
-        <Typography variant="h4">Company Logo</Typography>
-      </div>
+    <div className={clsx(classes.paper, classes.root)}>
+      <Typography variant="h4" className={classes.company}>
+        Golding Companies
+      </Typography>
+
       <div style={{ flexGrow: 1 }} />
       <div className={classes.bigScreen}>
         <Typography variant="h6" className={classes.route} onClick={() => openPage('profile')}>

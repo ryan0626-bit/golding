@@ -4,6 +4,7 @@ import HomeRoof from '../../images/HomeRoof.jpg'
 import Intro from './Intro'
 import Request from './Request'
 import NavBar from '../../NavBar'
+import useAtTop from '../../hooks/useAtTop'
 
 const useStyles = makeStyles(theme => ({
   background: {
@@ -74,12 +75,16 @@ const useStyles = makeStyles(theme => ({
 
 export default function Index() {
   const classes = useStyles()
+  const atTop = useAtTop()
+  console.log('index', atTop)
   return (
     <div className={classes.background}>
       <div className={classes.backgroundOverlay} />
-      <div className={classes.navBar}>
-        <NavBar />
-      </div>
+      {atTop && (
+        <div className={classes.navBar}>
+          <NavBar />
+        </div>
+      )}
       <div className={classes.intro}>
         <Intro />
       </div>

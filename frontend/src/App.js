@@ -8,6 +8,7 @@ import AppBar from '@material-ui/core/AppBar'
 
 export default function App() {
   const atTop = useAtTop()
+  console.log('App', atTop)
   return (
     <div>
       {!atTop && (
