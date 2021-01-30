@@ -1,8 +1,8 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
-import About from "./about";
-import Home from "./home";
-import NavBar from "./NavBar";
+import React from 'react'
+import { Route, Switch } from 'react-router-dom'
+import About from './about'
+import Home from './home'
+import NavBar from './NavBar'
 
 export default function App() {
   return (
@@ -17,5 +17,5 @@ export default function App() {
         </Route>
       </Switch>
     </div>
-  );
+  )
 }

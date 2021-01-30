@@ -1,50 +1,52 @@
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import axios from "axios";
-import fileDownload from "js-file-download";
-import React from "react";
+import Button from '@material-ui/core/Button'
+import { makeStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import axios from 'axios'
+import fileDownload from 'js-file-download'
+import React from 'react'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   textStyle: {
-    alignItems: "baseline",
-    display: "flex",
-    flexDirection: "column",
-    marginBottom: "2rem",
-    fontFamily: "Times New Roman",
-    fontSize: 30,
+    alignItems: 'baseline',
+    display: 'flex',
+    flexDirection: 'column',
+    marginBottom: '1rem',
+    fontFamily: 'Arial',
+    color: 'white',
   },
   headerStyle: {
-    display: "flex",
-    fontFamily: "Times New Roman",
-    marginBottom: "2rem",
+    display: 'flex',
+    fontFamily: 'Arial',
+    marginBottom: '1rem',
+    color: 'white',
+    fontWeight: 'bold',
   },
   intro: {
-    display: "flex",
-    flexDirection: "column",
+    display: 'flex',
+    flexDirection: 'column',
 
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: "3rem",
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: '3rem',
     },
   },
   projectsButton: {
     root: {
-      borderRadius: "30px!important",
+      borderRadius: '30px!important',
     },
   },
-}));
+}))
 
 export default function Intro() {
-  const classes = useStyles();
+  const classes = useStyles()
   const handleDownloadResume = async () => {
-    console.log("downloading");
+    console.log('downloading')
     const resp = await axios({
-      url: "http://127.0.0.1:5001/dev/resume",
-      responseType: "blob",
-      method: "GET",
-    });
-    console.log(resp.data);
-    fileDownload(resp.data, "RyanS-Resume.pdf");
+      url: 'http://127.0.0.1:5001/dev/resume',
+      responseType: 'blob',
+      method: 'GET',
+    })
+    console.log(resp.data)
+    fileDownload(resp.data, 'RyanS-Resume.pdf')
     // var xhr = new XMLHttpRequest();
 
     // var blob = new Blob([resp.data], {
@@ -58,22 +60,21 @@ export default function Intro() {
     // document.body.appendChild(link);
     // link.click();
     // window.open(objectUrl);
-  };
+  }
   return (
     <div className={classes.intro}>
       <div>
         <div>
           <Typography>LICENSE #123456</Typography>
         </div>
-        <Typography className={classes.headerStyle} variant="h2">
+        <Typography className={classes.headerStyle} variant="h3">
           Let Us Solve Your Roofing Problems
         </Typography>
       </div>
       <div>
         <div>
-          <Typography className={classes.textStyle}>
-            The best customer service in the business, no joke! Check it out by
-            yourself right now.
+          <Typography className={classes.textStyle} variant="h5">
+            The best customer service in the business, no joke! Check it out by yourself right now.
           </Typography>
         </div>
         <div>
@@ -89,5 +90,5 @@ export default function Intro() {
         </div>
       </div>
     </div>
-  );
+  )
 }
