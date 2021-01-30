@@ -2,12 +2,19 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import About from './about'
 import Home from './home'
-// import NavBar from './NavBar'
+import useAtTop from './hooks/useAtTop'
+import NavBar from './NavBar'
+import AppBar from '@material-ui/core/AppBar'
 
 export default function App() {
+  const atTop = useAtTop()
   return (
     <div>
-      {/* <NavBar /> */}
+      {!atTop && (
+        <AppBar>
+          <NavBar style={{ position: 'fixed!important' }} />
+        </AppBar>
+      )}
       <Switch>
         <Route path="/about">
           <About />
