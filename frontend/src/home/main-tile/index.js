@@ -1,10 +1,10 @@
 import { makeStyles } from '@material-ui/core/styles'
 import { React } from 'react'
+import useAtTop from '../../hooks/useAtTop'
 import HomeRoof from '../../images/HomeRoof.jpg'
+import NavBar from '../../NavBar'
 import Intro from './Intro'
 import Request from './Request'
-import NavBar from '../../NavBar'
-import useAtTop from '../../hooks/useAtTop'
 
 const useStyles = makeStyles(theme => ({
   background: {
@@ -37,17 +37,20 @@ const useStyles = makeStyles(theme => ({
   intro: {
     zIndex: 2,
     flexSrhink: 0,
-    paddingLeft: '4rem',
+
     [theme.breakpoints.up('lg')]: {
       flexBasis: '40%',
+      paddingLeft: '4rem',
     },
     [theme.breakpoints.only('md')]: {
       flexBasis: '40%',
+      paddingLeft: '2rem',
     },
 
     [theme.breakpoints.down('sm')]: {
       flexBasis: '100%',
-      justifySelf: 'center',
+      paddingLeft: '1rem',
+      paddingRight: '1rem',
     },
   },
   request: {
@@ -61,8 +64,6 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down('sm')]: {
       flexBasis: '100%',
-      paddingRight: '3rem',
-      paddingLeft: '4rem',
       justifySelf: 'center',
     },
   },

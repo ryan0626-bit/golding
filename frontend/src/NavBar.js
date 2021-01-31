@@ -10,7 +10,7 @@ import { useHistory } from 'react-router-dom'
 import React from 'react'
 import useAtTop from './hooks/useAtTop'
 import Logo from './images/gc.png'
-
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 const useStyles = makeStyles(theme => ({
   paper: {
     // padding: theme.spacing(3),
@@ -54,6 +54,7 @@ const useStyles = makeStyles(theme => ({
   },
 
   smallScreen: {
+    display: 'flex',
     [theme.breakpoints.up('md')]: {
       display: 'none',
     },
@@ -83,6 +84,7 @@ export default function NavBar() {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const atTop = useAtTop()
   const classes = useStyles({ atTop })
+  const xs = useMediaQuery(theme => theme.breakpoints.only('xs'))
 
   const handleClose = () => {
     setAnchorEl(null)
@@ -100,7 +102,7 @@ export default function NavBar() {
       <div className={classes.logoContainer}>
         <img src={Logo} className={classes.logo} />
       </div>
-      <Typography variant="h4" className={classes.company}>
+      <Typography variant={xs ? 'h6' : 'h4'} className={classes.company}>
         Golding Companies
       </Typography>
 

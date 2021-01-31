@@ -9,8 +9,11 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       marginLeft: '3rem',
+    },
+    [theme.breakpoints.down('sm')]: {
+      alignItems: 'center',
     },
   },
   licenseBackground: {
@@ -25,6 +28,9 @@ const useStyles = makeStyles(theme => ({
     padding: '0 .75rem 0 .75rem',
     textAlign: 'center',
     color: theme.palette.primary.dark,
+    [theme.breakpoints.down('sm')]: {
+      textAlign: 'center',
+    },
   },
   textStyle: {
     alignItems: 'baseline',
@@ -33,16 +39,25 @@ const useStyles = makeStyles(theme => ({
     marginBottom: '2rem',
     fontFamily: 'Arial',
     color: 'white',
+    [theme.breakpoints.down('sm')]: {
+      textAlign: 'center',
+    },
   },
   solve: {
     fontFamily: 'Arial',
     color: 'white',
     marginBottom: '.5rem',
+    [theme.breakpoints.down('sm')]: {
+      textAlign: 'center',
+    },
   },
   roofing: {
     fontFamily: 'Arial',
     color: 'white',
     fontWeight: 'bold',
+    [theme.breakpoints.down('sm')]: {
+      textAlign: 'center',
+    },
   },
   projectsButton: {
     root: {

@@ -19,6 +19,9 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '3rem',
     margin: '2rem',
     backgroundColor: 'white',
+    [theme.breakpoints.down('sm')]: {
+      padding: '1rem',
+    },
   },
   textBox: {
     margin: '1rem',
@@ -27,7 +30,11 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     margin: '2rem',
     flexDirection: 'column',
+    alignItems: 'center',
     paddingBottom: '',
+    [theme.breakpoints.down('sm')]: {
+      textAlign: 'center',
+    },
   },
   submit: {},
 }))

@@ -10,10 +10,10 @@ export default function App() {
   const atTop = useAtTop()
   console.log('App', atTop)
   return (
-    <div>
+    <div style={{ scrollX: 'hidden' }}>
       {!atTop && (
         <AppBar>
-          <NavBar style={{ position: 'fixed!important' }} />
+          <NavBar />
         </AppBar>
       )}
       <Switch>
