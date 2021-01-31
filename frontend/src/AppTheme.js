@@ -24,7 +24,7 @@ const palette = {
     main: '#ff1717',
   },
   grey: {
-    main: '#ddd',
+    main: '#f3f3f3',
     dark: '#919191',
   },
   priorities: {
