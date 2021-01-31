@@ -13,6 +13,9 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
+    [theme.breakpoints.down('sm')]: {
+      paddingTop: '3rem',
+    },
   },
   backgroundOverlay: {
     position: 'absolute',
