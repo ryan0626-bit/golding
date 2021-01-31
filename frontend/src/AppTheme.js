@@ -13,7 +13,7 @@ const palette = {
   },
   primary: {
     main: 'rgb(225, 171, 31)',
-    light: '#4eccfd',
+    light: 'rgb(220, 205, 166)',
     dark: 'rgb(186, 143, 30)',
   },
   secondary: {
