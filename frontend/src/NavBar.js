@@ -10,6 +10,7 @@ import { useHistory } from 'react-router-dom'
 import React from 'react'
 import useAtTop from './hooks/useAtTop'
 import Logo from './images/gc.png'
+import WhiteLogo from './images/gc-white.png'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -31,10 +32,11 @@ const useStyles = makeStyles(theme => ({
   logo: {
     height: '2rem',
   },
-  logoContainer: {
+  logoContainer: ({ atTop }) => ({
+    color: 'white',
     marginLeft: '2rem',
     marginRight: '.5rem',
-  },
+  }),
   root: {
     flexDirection: 'row',
     display: 'flex',
@@ -100,7 +102,7 @@ export default function NavBar() {
   return (
     <div className={clsx(classes.paper, classes.root)}>
       <div className={classes.logoContainer}>
-        <img src={Logo} className={classes.logo} />
+        <img src={atTop ? Logo : WhiteLogo} className={classes.logo} />
       </div>
       <Typography variant={xs ? 'h6' : 'h4'} className={classes.company}>
         Golding Companies
