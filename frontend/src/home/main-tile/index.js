@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     backgroundImage: `url(${HomeRoof})`,
     // backgroundSize: '100% 100vh',
     position: 'relative',
-    minHeight: '92vh',
+    minHeight: '100vh',
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
@@ -76,7 +76,6 @@ const useStyles = makeStyles(theme => ({
 export default function Index() {
   const classes = useStyles()
   const atTop = useAtTop()
-  console.log('index', atTop)
   return (
     <div className={classes.background}>
       <div className={classes.backgroundOverlay} />

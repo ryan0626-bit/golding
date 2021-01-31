@@ -9,6 +9,7 @@ import clsx from 'clsx'
 import { useHistory } from 'react-router-dom'
 import React from 'react'
 import useAtTop from './hooks/useAtTop'
+import Logo from './images/gc.png'
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -22,18 +23,25 @@ const useStyles = makeStyles(theme => ({
     // padding: '1rem',
     color: atTop ? theme.palette.primary.main : 'white',
     fontWeight: 'bold',
-    margin: '1rem 1rem 1rem 3rem',
+    // margin: '1rem 1rem 1rem 0rem',
     '&:hover': {
       cursor: 'pointer',
     },
   }),
-
+  logo: {
+    height: '2rem',
+  },
+  logoContainer: {
+    marginLeft: '2rem',
+    marginRight: '.5rem',
+  },
   root: {
     flexDirection: 'row',
     display: 'flex',
     marginTop: '1rem',
+
     // justifyContent: 'space-around',
-    // alignItems: 'flex-start',
+    alignItems: 'center',
   },
   navButton: {
     '&:hover': {
@@ -89,6 +97,9 @@ export default function NavBar() {
 
   return (
     <div className={clsx(classes.paper, classes.root)}>
+      <div className={classes.logoContainer}>
+        <img src={Logo} className={classes.logo} />
+      </div>
       <Typography variant="h4" className={classes.company}>
         Golding Companies
       </Typography>
