@@ -3,14 +3,13 @@ import { makeStyles } from '@material-ui/core/styles'
 import React from 'react'
 import { Redirect, Route, Switch, useLocation } from 'react-router-dom'
 import About from './about'
+import BottomChat from './components/BottomChat'
+import NavBar from './components/NavBar'
 import Home from './home'
 import useAtTop from './hooks/useAtTop'
-import NavBar from './components/NavBar'
 
 const useStyles = makeStyles(theme => ({
-  appBar: ({ atTop, isHome }) => ({
-    display: atTop && isHome ? 'none' : '',
-  }),
+  appBar: ({ atTop, isHome }) => ({}),
   root: {
     scrollX: 'hidden',
   },
@@ -21,7 +20,11 @@ export default function App() {
   const classes = useStyles({ atTop, isHome })
   return (
     <div className={classes.root}>
-      <AppBar className={classes.appBar}>
+      <AppBar
+        position="fixed"
+        color={atTop && isHome ? 'transparent' : 'primary'}
+        className={classes.appBar}
+      >
         <NavBar />
       </AppBar>
       <Switch>
@@ -33,6 +36,7 @@ export default function App() {
         </Route>
         <Redirect to="/" />
       </Switch>
+      <BottomChat />
     </div>
   )
 }

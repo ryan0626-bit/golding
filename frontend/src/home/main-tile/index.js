@@ -1,8 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles'
 import { React } from 'react'
-import useAtTop from '../../hooks/useAtTop'
 import HomeRoof from '../../images/HomeRoof.jpg'
-import NavBar from '../../components/NavBar'
 import Intro from './Intro'
 import Request from './Request'
 
@@ -28,8 +26,6 @@ const useStyles = makeStyles(theme => ({
     zIndex: 1,
   },
   navBar: {
-    zIndex: 2,
-    flexGrow: 1,
     flexBasis: '100%',
   },
   intro: {
@@ -74,15 +70,11 @@ const useStyles = makeStyles(theme => ({
 
 export default function Index() {
   const classes = useStyles()
-  const atTop = useAtTop()
+
   return (
     <div className={classes.background}>
       <div className={classes.backgroundOverlay} />
-      {atTop && (
-        <div className={classes.navBar}>
-          <NavBar />
-        </div>
-      )}
+      <div className={classes.navBar} />
       <div className={classes.intro}>
         <Intro />
       </div>
