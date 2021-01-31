@@ -5,19 +5,22 @@ import { Redirect, Route, Switch, useLocation } from 'react-router-dom'
 import About from './about'
 import Home from './home'
 import useAtTop from './hooks/useAtTop'
-import NavBar from './NavBar'
+import NavBar from './components/NavBar'
 
 const useStyles = makeStyles(theme => ({
   appBar: ({ atTop, isHome }) => ({
     display: atTop && isHome ? 'none' : '',
   }),
+  root: {
+    scrollX: 'hidden',
+  },
 }))
 export default function App() {
   const atTop = useAtTop()
   const isHome = useLocation().pathname === '/'
   const classes = useStyles({ atTop, isHome })
   return (
-    <div style={{ scrollX: 'hidden' }}>
+    <div className={classes.root}>
       <AppBar className={classes.appBar}>
         <NavBar />
       </AppBar>

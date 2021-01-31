@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { React } from 'react'
 import useAtTop from '../../hooks/useAtTop'
 import HomeRoof from '../../images/HomeRoof.jpg'
-import NavBar from '../../NavBar'
+import NavBar from '../../components/NavBar'
 import Intro from './Intro'
 import Request from './Request'
 

@@ -8,9 +8,9 @@ import MenuIcon from '@material-ui/icons/Menu'
 import clsx from 'clsx'
 import React from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
-import useAtTop from './hooks/useAtTop'
-import WhiteLogo from './images/gc-white.png'
-import Logo from './images/gc.png'
+import useAtTop from '../hooks/useAtTop'
+import WhiteLogo from '../images/LogoWhite.png'
+import Logo from '../images/Logo.png'
 const useStyles = makeStyles(theme => ({
   paper: {
     textAlign: 'center',
