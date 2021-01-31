@@ -1,18 +1,16 @@
 import IconButton from '@material-ui/core/IconButton'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
-import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 import MenuIcon from '@material-ui/icons/Menu'
 import clsx from 'clsx'
-import { useHistory } from 'react-router-dom'
 import React from 'react'
+import { useHistory, useLocation } from 'react-router-dom'
 import useAtTop from './hooks/useAtTop'
-import Logo from './images/gc.png'
 import WhiteLogo from './images/gc-white.png'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { useLocation } from 'react-router-dom'
+import Logo from './images/gc.png'
 const useStyles = makeStyles(theme => ({
   paper: {
     textAlign: 'center',
@@ -103,6 +101,9 @@ export default function NavBar() {
     history.push(`/${page}`)
     handleClose()
   }
+  const handleCallNow = () => {
+    window.location.href = 'tel:202-430-0948'
+  }
 
   return (
     <div className={clsx(classes.paper, classes.root)}>
@@ -118,10 +119,10 @@ export default function NavBar() {
       <div style={{ flexGrow: 1 }} />
       <div className={classes.bigScreen}>
         <Typography variant="h6" className={classes.route} onClick={() => openPage('profile')}>
-          Profile
+          Home
         </Typography>
         <Typography variant="h6" className={classes.route} onClick={() => openPage('account')}>
-          My account
+          Something
         </Typography>
         <Typography variant="h6" className={classes.route} onClick={() => openPage('about')}>
           About
@@ -144,6 +145,7 @@ export default function NavBar() {
           <MenuItem onClick={() => openPage('profile')}>Profile</MenuItem>
           <MenuItem onClick={() => openPage('account')}>My account</MenuItem>
           <MenuItem onClick={() => openPage('about')}>About</MenuItem>
+          <MenuItem onClick={handleCallNow}>Call Now</MenuItem>
         </Menu>
       </div>
     </div>

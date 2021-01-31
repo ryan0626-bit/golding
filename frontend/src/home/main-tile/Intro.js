@@ -12,6 +12,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       marginLeft: '3rem',
     },
+    [theme.breakpoints.only('sm')]: {
+      marginLeft: '6rem',
+      marginRight: '6rem',
+    },
     [theme.breakpoints.down('sm')]: {
       alignItems: 'center',
     },
@@ -70,7 +74,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Intro() {
   const classes = useStyles()
-  const handleCallUs = () => {
+  const handleCallNow = () => {
     window.location.href = 'tel:202-430-0948'
   }
   return (
@@ -97,7 +101,7 @@ export default function Intro() {
         className={classes.projectsButton}
         variant="contained"
         color="primary"
-        onClick={handleCallUs}
+        onClick={handleCallNow}
       >
         Call Us Now!
       </Button>
