@@ -18,8 +18,6 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-//look how I coded the following
-
 export default function Icons() {
   const classes = useStyles()
   const handleWebsiteClick = siteName => {

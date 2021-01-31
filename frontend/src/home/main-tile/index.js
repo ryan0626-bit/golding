@@ -9,14 +9,12 @@ import Request from './Request'
 const useStyles = makeStyles(theme => ({
   background: {
     backgroundImage: `url(${HomeRoof})`,
-    // backgroundSize: '100% 100vh',
     position: 'relative',
     minHeight: '100vh',
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    // justifyContent: 'center',
   },
   backgroundOverlay: {
     position: 'absolute',

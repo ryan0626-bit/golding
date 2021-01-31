@@ -5,7 +5,7 @@ import Person from '../images/IconPerson.jpg'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    marginLeft: '3rem', // try to keep the same rem size as what is above (ie. 3)
+    marginLeft: '3rem',
     marginRight: '3rem',
     display: 'flex',
     flexDirection: 'column',
@@ -25,8 +25,6 @@ const useStyles = makeStyles(theme => ({
     marginTop: '1rem',
   },
 }))
-
-//look how I coded the followØing
 
 export default function Quote() {
   const classes = useStyles()

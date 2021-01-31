@@ -12,19 +12,16 @@ import useAtTop from './hooks/useAtTop'
 import Logo from './images/gc.png'
 import WhiteLogo from './images/gc-white.png'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { useLocation } from 'react-router-dom'
 const useStyles = makeStyles(theme => ({
   paper: {
-    // padding: theme.spacing(3),
-    // height: '10vh',
     textAlign: 'center',
     color: theme.palette.text.secondary,
     flexGrow: 1,
   },
-  company: ({ atTop }) => ({
-    // padding: '1rem',
-    color: atTop ? theme.palette.primary.main : 'white',
+  company: ({ atTop, isHome }) => ({
+    color: atTop && isHome ? theme.palette.primary.main : 'white',
     fontWeight: 'bold',
-    // margin: '1rem 1rem 1rem 0rem',
     '&:hover': {
       cursor: 'pointer',
     },
@@ -41,8 +38,6 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row',
     display: 'flex',
     marginTop: '1rem',
-
-    // justifyContent: 'space-around',
     alignItems: 'center',
   },
   navButton: {
@@ -68,15 +63,24 @@ const useStyles = makeStyles(theme => ({
     },
     marginRight: '2rem',
   },
-  route: ({ atTop }) => ({
+  menuIcon: {
+    color: 'white',
+  },
+  route: ({ atTop, isHome }) => ({
     color: 'white',
     padding: '.25rem 1rem .25rem 1rem',
     margin: '1rem',
     borderRadius: '2rem',
     '&:hover': {
       cursor: 'pointer',
-      backgroundColor: atTop ? theme.palette.primary.main : 'white',
-      color: atTop ? 'white' : theme.palette.primary.main,
+      backgroundColor: atTop && isHome ? theme.palette.primary.main : 'white',
+      color: isHome && atTop ? 'white' : theme.palette.primary.main,
+    },
+  }),
+  companyWrapper: ({ atTop, isHome }) => ({
+    display: 'flex',
+    '&:hover': {
+      cursor: 'pointer',
     },
   }),
 }))
@@ -85,7 +89,8 @@ export default function NavBar() {
   const history = useHistory()
   const [anchorEl, setAnchorEl] = React.useState(null)
   const atTop = useAtTop()
-  const classes = useStyles({ atTop })
+  const isHome = useLocation().pathname === '/'
+  const classes = useStyles({ atTop, isHome })
   const xs = useMediaQuery(theme => theme.breakpoints.only('xs'))
 
   const handleClose = () => {
@@ -101,12 +106,14 @@ export default function NavBar() {
 
   return (
     <div className={clsx(classes.paper, classes.root)}>
-      <div className={classes.logoContainer}>
-        <img src={atTop ? Logo : WhiteLogo} className={classes.logo} />
+      <div className={classes.companyWrapper} onClick={() => openPage('')}>
+        <div className={classes.logoContainer}>
+          <img src={atTop && isHome ? Logo : WhiteLogo} className={classes.logo} />
+        </div>
+        <Typography variant={xs ? 'h6' : 'h4'} className={classes.company}>
+          Golding Companies
+        </Typography>
       </div>
-      <Typography variant={xs ? 'h6' : 'h4'} className={classes.company}>
-        Golding Companies
-      </Typography>
 
       <div style={{ flexGrow: 1 }} />
       <div className={classes.bigScreen}>
@@ -123,7 +130,7 @@ export default function NavBar() {
       <div className={classes.smallScreen}>
         <div className={classes.navButton}>
           <IconButton onClick={handleOpen}>
-            <MenuIcon />
+            <MenuIcon className={classes.menuIcon} />
           </IconButton>
         </div>
 

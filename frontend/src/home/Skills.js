@@ -18,17 +18,6 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
   },
-  poppyRow: {
-    marginLeft: '3rem', // try to keep the same rem size as what is above (ie. 3)
-    marginRight: '3rem',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  picture: {
-    maxHeight: '100%',
-    maxWidth: '100%',
-  },
   pic: {
     [theme.breakpoints.up('sm')]: {
       marginRight: '3rem',
@@ -53,25 +42,20 @@ const useStyles = makeStyles(theme => ({
     marginRight: '1.5rem',
     fontSize: 25,
     borderTop: '8px solid blue',
-
-    // flexBasis: "50%",
   },
   rightDiscription: {
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
     marginLeft: '1.5rem',
-
     fontSize: 25,
     borderTop: '8px solid blue',
-    // flexBasis: "50%",
   },
   skills: {
     margin: '3rem',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'stretch',
-    // flexWrap: "wrap",
     justifyContent: 'space-around',
     flexGrow: 1,
   },
@@ -82,8 +66,6 @@ const useStyles = makeStyles(theme => ({
   },
   viewButton: {},
 }))
-
-//look how I coded the following
 
 export default function App() {
   const classes = useStyles()
