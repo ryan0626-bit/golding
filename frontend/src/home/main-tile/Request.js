@@ -1,66 +1,68 @@
-import { Button, Typography } from '@material-ui/core'
-import MenuItem from '@material-ui/core/MenuItem'
-import Select from '@material-ui/core/Select'
-import { makeStyles } from '@material-ui/core/styles'
-import TextField from '@material-ui/core/TextField'
-import { React, useState } from 'react'
+import { Button, Typography } from "@material-ui/core";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import { React, useState } from "react";
+import axios from "axios";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    [theme.breakpoints.up('sm')]: {
-      marginRight: '3rem',
+    [theme.breakpoints.up("sm")]: {
+      marginRight: "3rem",
     },
-    display: 'flex',
-    flexDirection: 'column',
-    padding: '2rem',
+    display: "flex",
+    flexDirection: "column",
+    padding: "2rem",
     flexGrow: 1,
-    justifyContent: 'space-around',
+    justifyContent: "space-around",
     border: `1px ${theme.palette.grey.main} solid`,
-    borderRadius: '3rem',
-    margin: '2rem',
-    backgroundColor: 'white',
-    [theme.breakpoints.only('sm')]: {
-      marginLeft: '6rem',
-      marginRight: '6rem',
+    borderRadius: "3rem",
+    margin: "2rem",
+    backgroundColor: "white",
+    [theme.breakpoints.only("sm")]: {
+      marginLeft: "6rem",
+      marginRight: "6rem",
     },
-    [theme.breakpoints.down('sm')]: {
-      padding: '1rem',
+    [theme.breakpoints.down("sm")]: {
+      padding: "1rem",
     },
   },
   textBox: {
-    margin: '1rem',
+    margin: "1rem",
   },
   estimate: {
-    display: 'flex',
-    margin: '2rem',
-    flexDirection: 'column',
-    alignItems: 'center',
-    paddingBottom: '',
-    [theme.breakpoints.down('sm')]: {
-      textAlign: 'center',
+    display: "flex",
+    margin: "2rem",
+    flexDirection: "column",
+    alignItems: "center",
+    paddingBottom: "",
+    [theme.breakpoints.down("sm")]: {
+      textAlign: "center",
     },
   },
   submit: {},
-}))
+}));
 
 export default function App() {
-  const classes = useStyles()
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [phoneNumber, setPhoneNumber] = useState('')
-  const [roof, setRoof] = useState('')
+  const classes = useStyles();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [roof, setRoof] = useState("");
 
   const clear = () => {
-    setName('')
-    setEmail('')
-    setPhoneNumber('')
-    setRoof('')
-  }
+    setName("");
+    setEmail("");
+    setPhoneNumber("");
+    setRoof("");
+  };
 
-  const handleSubmit = () => {
-    const payload = { name, email, phoneNumber, roof }
-    clear()
-  }
+  const handleSubmit = async () => {
+    const payload = { name, email, phoneNumber, roofType: roof };
+    await axios.post("http://127.0.0.1:5001/dev/request", payload);
+    clear();
+  };
 
   return (
     <div className={classes.root}>
@@ -74,44 +76,49 @@ export default function App() {
         className={classes.textBox}
         variant="outlined"
         value={name}
-        placeholder={'Name...'}
-        onChange={e => {
-          setName(e.target.value)
+        placeholder={"Name..."}
+        onChange={(e) => {
+          setName(e.target.value);
         }}
       />
       <TextField
         className={classes.textBox}
         variant="outlined"
         value={email}
-        placeholder={'Email...'}
-        onChange={e => {
-          setEmail(e.target.value)
+        placeholder={"Email..."}
+        onChange={(e) => {
+          setEmail(e.target.value);
         }}
       />
       <TextField
         className={classes.textBox}
         variant="outlined"
         value={phoneNumber}
-        placeholder={'Phone Number...'}
-        onChange={e => {
-          setPhoneNumber(e.target.value)
+        placeholder={"Phone Number..."}
+        onChange={(e) => {
+          setPhoneNumber(e.target.value);
         }}
       />
 
       <Select
         variant="outlined"
         className={classes.textBox}
-        placeholder={'Im Interested In...'}
-        onChange={e => setRoof(e.target.value)}
+        placeholder={"Im Interested In..."}
+        onChange={(e) => setRoof(e.target.value)}
         value={roof}
       >
-        <MenuItem value={'new'}>New Roof</MenuItem>
-        <MenuItem value={'repair'}>Repair Roof</MenuItem>
+        <MenuItem value={"new"}>New Roof</MenuItem>
+        <MenuItem value={"repair"}>Repair Roof</MenuItem>
       </Select>
 
-      <Button color="primary" variant="contained" className={classes.submit} onClick={handleSubmit}>
+      <Button
+        color="primary"
+        variant="contained"
+        className={classes.submit}
+        onClick={handleSubmit}
+      >
         Submit Now!
       </Button>
     </div>
-  )
+  );
 }

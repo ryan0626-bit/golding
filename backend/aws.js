@@ -1,13 +1,20 @@
-import { SESV2, SNS } from 'aws-sdk'
+import { SESV2, SNS } from "aws-sdk";
 
-const ses = new SESV2()
-const sns = new SNS()
+const ses = new SESV2();
+const sns = new SNS();
 
-export const sendEmail = async ({ name = '', email = '', phoneNumber = '', message = '' }) => {
+export const sendEmail = async ({
+  name = "",
+  email = "",
+  phoneNumber = "",
+  message = "",
+}) => {
   const params = {
     Destination: {
-      ToAddresses: ['ryan.weaver718@gmail.com', 'ryan062692@gmail.com'],
-      Message: {
+      ToAddresses: ["ryan.weaver718@gmail.com", "ryan062692@gmail.com"],
+    },
+    Content: {
+      Simple: {
         Body: {
           Html: {
             Data: `<div style="display:flex; flex-direction=column">
@@ -19,23 +26,29 @@ export const sendEmail = async ({ name = '', email = '', phoneNumber = '', messa
           },
         },
         Subject: {
-          Data: 'New Estimate Request',
+          Data: "New Estimate Request",
         },
-        Source: 'ryan.weaver718@gmail.com',
       },
     },
-  }
 
-  const { MessageId } = await ses.sendEmail(params).promise()
-  return { messageId: MessageId, name, email, phoneNumber, message }
-}
+    FromEmailAddress: "ryan.weaver718@gmail.com",
+  };
 
-export const sendText = async ({ name = '', email = '', phoneNumber = '', message = '' }) => {
+  const { MessageId } = await ses.sendEmail(params).promise();
+  return { messageId: MessageId, name, email, phoneNumber, message };
+};
+
+export const sendText = async ({
+  name = "",
+  email = "",
+  phoneNumber = "",
+  message = "",
+}) => {
   const params = {
     Message: `${name} requested contact their email: ${email}, phone: ${phoneNumber}, message: ${message}`,
-    PhoneNumber: '3011111111',
-  }
-  const response = await sns.publish(params).promise()
+    PhoneNumber: "+12404578550",
+  };
+  const { MessageId } = await sns.publish(params).promise();
 
-  return { response, name, email, phoneNumber, message }
-}
+  return { messageId: MessageId, name, email, phoneNumber, message };
+};

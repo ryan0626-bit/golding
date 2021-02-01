@@ -1,30 +1,23 @@
-import { response } from './helpers'
-import RequestModel from './models/Request'
+import { response } from "./helpers";
+import RequestModel from "./models/Request";
+import { sendEmail, sendText } from "./aws";
 
 export const createRequest = async ({ body, queryStringParameters }) => {
-  const { email, roofType, message } = JSON.parse(body)
-  const request = await RequestModel.create({ email, message, roofType })
-  return response({ request })
+  const { email, roofType, message } = JSON.parse(body);
+  const request = await RequestModel.create({ email, message, roofType });
+  let name = "bobby";
+  let phoneNumber = "3018888888";
+  const sentEmail = await sendEmail({
+    name,
+    email,
+    phoneNumber,
+    message: roofType,
+  });
+  return response({ sentEmail });
 };
 
-export const getRequest = async ({ queryStringParameters }) => {
-  const { email } = queryStringParameters
-  let Request = await RequestModel.get({ email })
-  if (!email) {
-    email = await RequestModel.create({ email })
-  }
-  return response({ email: email.serialize() })
-};
-
-export const updateRequest = acync ({ body, queryStringParameters }) => {
-  const {email} = queryStringParameters
-  const {Request} = JSON.parse(body)
-  const updateRequest = await UserModel.updateRequest(email, Request)
-  return response({ email: updateRequest})
-};
-
-export const deleteRequest = async ({queryStringParameters}) => {
-  const{email} = queryStringParameters
-  const deleteEmail = await RequestModel.deleteRequest(email)
-  return response({ success: true, email: deleteEmail})
+export const sendTextMessage = async ({ body }) => {
+  const { name, phoneNumber, message } = JSON.parse(body);
+  const sentMessage = await sendText({ name, phoneNumber, message });
+  return response({ sentMessage });
 };
