@@ -1,91 +1,92 @@
-import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
-import ChatIcon from "@material-ui/icons/Chat";
-import React, { useState } from "react";
+import Box from '@material-ui/core/Box'
+import Button from '@material-ui/core/Button'
+import { makeStyles } from '@material-ui/core/styles'
+import TextField from '@material-ui/core/TextField'
+import Typography from '@material-ui/core/Typography'
+import ChatIcon from '@material-ui/icons/Chat'
+import React, { useState } from 'react'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   bottomMessageBox: {
-    padding: "1rem",
-    display: "flex",
-    flexDirection: "column",
-    borderRadius: " 0 0 1.1rem 1.1rem",
+    padding: '1rem',
+    display: 'flex',
+    flexDirection: 'column',
+    borderRadius: ' 0 0 1.1rem 1.1rem',
   },
   textField: {
-    margin: ".5rem 1rem .5rem 1rem",
+    margin: '.5rem 1rem .5rem 1rem',
     padding: 0,
-    backgroundColor: "white",
+    backgroundColor: 'white',
   },
   topBar: {
     backgroundColor: theme.palette.primary.main,
-    color: "white",
-    padding: "1rem 0 1rem 0",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: "1.1rem 1.1rem 0 0",
+    color: 'white',
+    padding: '1rem 0 1rem 0',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: '1.1rem 1.1rem 0 0',
   },
   form: {
-    margin: "1rem 1.5rem 0rem 2rem",
-    display: "flex",
-    padding: "1rem 0 2rem 0",
-    backgroundColor: "white",
-    flexDirection: "column",
-    borderRadius: "1rem",
+    margin: '1rem 1.5rem 0rem 2rem',
+    display: 'flex',
+    padding: '1rem 0 2rem 0',
+    backgroundColor: 'white',
+    flexDirection: 'column',
+    borderRadius: '1rem',
   },
   terms: {
-    margin: "0 1rem 0 1rem",
-    display: "flex",
-    justifyContent: "center",
+    margin: '0 1rem 0 1rem',
+    display: 'flex',
+    justifyContent: 'center',
   },
   termsText: {
     fontSize: theme.typography.pxToRem(8),
-    textAlign: "center",
+    textAlign: 'center',
   },
   send: {
-    margin: "1rem 1.5rem 0rem 2rem",
+    margin: '1rem 1.5rem 0rem 2rem',
   },
   messageInfo: {
-    margin: "1rem 1.5rem 0rem 2rem",
-    padding: "1rem",
+    margin: '1rem 1.5rem 0rem 2rem',
+    padding: '1rem',
     backgroundColor: theme.palette.primary.light,
-    borderRadius: "1rem 1rem 1rem 0 ",
+    borderRadius: '1rem 1rem 1rem 0 ',
   },
-}));
+}))
 export default function MessageForm({ handleSubmit }) {
-  const classes = useStyles();
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [message, setMessage] = useState("");
-  const [name, setName] = useState("");
-  const [nameError, setNameError] = useState(false);
-  const [phoneNumberError, setPhoneNumberError] = useState(false);
-  const [messageError, setMessageError] = useState(false);
-
-  const handleText = async () => {
-    const payload = { name, phoneNumber, message };
-    await handleSubmit(payload); 
-    setName("")
-    setPhoneNumber("")
-    setMessage("") 
-    validateInput()
-  };
+  const classes = useStyles()
+  const [phoneNumber, setPhoneNumber] = useState('')
+  const [message, setMessage] = useState('')
+  const [name, setName] = useState('')
+  const [nameError, setNameError] = useState(false)
+  const [phoneNumberError, setPhoneNumberError] = useState(false)
+  const [messageError, setMessageError] = useState(false)
 
   const validateInput = () => {
-      let isValid = true;
-      if (name === '') {
-          setNameError(true);
-          isValid = false;
-      }
-      if (phoneNumber === '' || phoneNumber <= "9") {
-          setPhoneNumberError(true);
-          isValid = false;
-      }
-      if (message === '') {
-          setMessageError(true);
-          isValid = false;
-      }
+    let isValid = true
+    if (name === '') {
+      setNameError(true)
+      isValid = false
+    }
+    if (phoneNumber === '' || phoneNumber.length <= '9') {
+      setPhoneNumberError(true)
+      isValid = false
+    }
+    if (message === '') {
+      setMessageError(true)
+      isValid = false
+    }
+    return isValid
+  }
+  const handleText = async () => {
+    if (validateInput()) {
+      const payload = { name, phoneNumber, message }
+      await handleSubmit(payload)
+      setName('')
+      setPhoneNumber('')
+      setMessage('')
+    }
   }
 
   return (
@@ -112,9 +113,9 @@ export default function MessageForm({ handleSubmit }) {
           placeholder="Name..."
           label="Name"
           className={classes.textField}
-          onChange={(e) => {
-            setName(e.target.value);
-            setNameError(false);
+          onChange={e => {
+            setName(e.target.value)
+            setNameError(false)
           }}
         />
         <TextField
@@ -125,19 +126,19 @@ export default function MessageForm({ handleSubmit }) {
           label="Mobile Phone"
           value={phoneNumber}
           className={classes.textField}
-          onChange={(e) => {
-            setPhoneNumber(e.target.value);
-            setPhoneNumberError(false);
+          onChange={e => {
+            setPhoneNumber(e.target.value)
+            setPhoneNumberError(false)
           }}
         />
         <TextField
-          onChange={(e) => {
-            setMessage(e.target.value);
-            setMessageError(false);
+          onChange={e => {
+            setMessage(e.target.value)
+            setMessageError(false)
           }}
           helperText={messageError ? 'A Message Is Required' : ''}
           placeholder="Message..."
-          variant='outlined'
+          variant="outlined"
           value={message}
           label="Message"
           multiline
@@ -158,7 +159,7 @@ export default function MessageForm({ handleSubmit }) {
 
         <Button
           onClick={() => {
-            handleText();
+            handleText()
           }}
           className={classes.send}
           color="primary"
@@ -169,5 +170,5 @@ export default function MessageForm({ handleSubmit }) {
         </Button>
       </div>
     </>
-  );
+  )
 }
