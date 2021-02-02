@@ -3,28 +3,15 @@ import { makeStyles } from '@material-ui/core/styles'
 import React from 'react'
 
 const useStyles = makeStyles(theme => ({
-  icons: {
-    marginBottom: '.5rem',
+  root: {
     display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  iconButtons: {
-    marginLeft: '1rem',
-    marginRight: '1rem',
-  },
-  linkIcon: {
-    fontSize: theme.typography.pxToRem(50),
   },
 }))
 
 export default function Icons() {
   const classes = useStyles()
-  const handleWebsiteClick = siteName => {
-    window.location.href = siteName
-  }
   return (
-    <div>
+    <div className={classes.root}>
       <div>
         <Typography>100+</Typography>
       </div>

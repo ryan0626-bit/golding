@@ -59,15 +59,11 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-around',
     flexGrow: 1,
   },
-  root: {
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column',
-  },
+
   viewButton: {},
 }))
 
-export default function App() {
+export default function Skill() {
   const classes = useStyles()
 
   return (

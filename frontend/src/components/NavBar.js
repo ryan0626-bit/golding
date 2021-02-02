@@ -9,8 +9,8 @@ import clsx from 'clsx'
 import React from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import useAtTop from '../hooks/useAtTop'
-import WhiteLogo from '../images/LogoWhite.png'
 import Logo from '../images/Logo.png'
+import WhiteLogo from '../images/LogoWhite.png'
 const useStyles = makeStyles(theme => ({
   paper: {
     textAlign: 'center',
@@ -109,7 +109,7 @@ export default function NavBar() {
     <div className={clsx(classes.paper, classes.root)}>
       <div className={classes.companyWrapper} onClick={() => openPage('')}>
         <div className={classes.logoContainer}>
-          <img src={atTop && isHome ? Logo : WhiteLogo} className={classes.logo} />
+          <img alt="Logo" src={atTop && isHome ? Logo : WhiteLogo} className={classes.logo} />
         </div>
         <Typography variant={xs ? 'h6' : 'h4'} className={classes.company}>
           Golding Companies
