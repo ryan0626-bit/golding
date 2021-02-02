@@ -50,6 +50,10 @@ export default function App() {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [roof, setRoof] = useState("");
+  const [nameError, setNameError] = useState(false);
+  const [phoneNumberError, setPhoneNumberError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [roofError, setRoofError] = useState(false);
 
   const clear = () => {
     setName("");
@@ -62,7 +66,28 @@ export default function App() {
     const payload = { name, email, phoneNumber, roofType: roof };
     await axios.post("http://127.0.0.1:5001/dev/request", payload);
     clear();
+    validateForm();
   };
+
+  const validateForm = () => {
+    let isValid = true;
+    if (name === '') {
+        setNameError(true);
+        isValid = false;
+    }
+    if (phoneNumber === '' || phoneNumber <= "9") {
+        setPhoneNumberError(true);
+        isValid = false;
+    }
+    if (email === '') {
+        setEmailError(true);
+        isValid = false;
+    }
+    if (roof === '') {
+      setRoofError(true);
+      isValid = false;
+    }
+};
 
   return (
     <div className={classes.root}>
@@ -76,9 +101,12 @@ export default function App() {
         className={classes.textBox}
         variant="outlined"
         value={name}
+        error={nameError}
+        helperText={nameError ? 'Name Is Required' : ''}
         placeholder={"Name..."}
         onChange={(e) => {
           setName(e.target.value);
+          setNameError(false);
         }}
       />
       <TextField
@@ -86,26 +114,38 @@ export default function App() {
         variant="outlined"
         value={email}
         placeholder={"Email..."}
+        helperText={emailError ? 'Email Is Required' : ''}
+        error={emailError}
         onChange={(e) => {
           setEmail(e.target.value);
+          setEmailError(false)
         }}
       />
       <TextField
         className={classes.textBox}
         variant="outlined"
+        error={phoneNumberError}
+        helperText={phoneNumberError ? "Phone Number Is Required" : ''}
         value={phoneNumber}
         placeholder={"Phone Number..."}
         onChange={(e) => {
           setPhoneNumber(e.target.value);
+          setPhoneNumberError(false)
         }}
       />
 
       <Select
         variant="outlined"
         className={classes.textBox}
+        error={roofError}
+        helperText={roofError ? 'Select An Option' : ''}
         placeholder={"Im Interested In..."}
-        onChange={(e) => setRoof(e.target.value)}
         value={roof}
+        onChange={(e) => {
+        setRoof(e.target.value)
+        setPhoneNumberError(false);
+        }}
+        
       >
         <MenuItem value={"new"}>New Roof</MenuItem>
         <MenuItem value={"repair"}>Repair Roof</MenuItem>
