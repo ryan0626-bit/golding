@@ -1,9 +1,8 @@
 import { Button, Typography } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
-import BuildIcon from '@material-ui/icons/Build'
-import PaletteIcon from '@material-ui/icons/Palette'
 import React from 'react'
+import roof from '../images/roof.jpg'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -59,6 +58,23 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-around',
     flexGrow: 1,
   },
+  header: {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '1rem',
+  },
+  body: {
+    margin: '1rem'
+  },
+  body2: {
+    margin: '1rem'
+  },
+  pic2: {
+    [theme.breakpoints.up('sm')]: {
+      marginRight: '3rem',
+    },
+    width: '.1',
+  },
 
   viewButton: {},
 }))
@@ -71,21 +87,20 @@ export default function Skill() {
       <div className={classes.skills}>
         <Paper elevation={5} className={classes.leftDiscription}>
           <div>
-            <PaletteIcon />
+           
           </div>
           <Typography>
-            Web Design User Focused A website should be designed for the people who will use it, so
-            that's exactly what I do. User focused design should be the primary goal of any website.
+            <div className={classes.pic}><img src={roof}></img></div>
           </Typography>
         </Paper>
         <Paper elevation={5} className={classes.rightDiscription}>
-          <div>
-            <BuildIcon />
-          </div>
           <Typography>
-            Web Development Responsive and Fast Every website should be built with two primary
-            goals: Firstly, it needs to work across all devices. Secondly, it needs to be fast as
-            possible.
+          <Typography variant='h4'>
+          <div className={classes.header}>Why People
+Choose Us?</div></Typography>
+<div className={classes.body}>Golding provide superior services and protection for your home or business at an affordable price through quality workmanship, long-lasting materials, and exceptional customer service.</div>
+
+<div className={classes.body2}>Whether your roof needs repair, maintenance services, or replacement, our roofing professionals have the knowledge and expertise to complete the job in a timely manner and to your satisfaction.</div>
           </Typography>
         </Paper>
       </div>
