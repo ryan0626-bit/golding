@@ -14,13 +14,13 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function App() {
+export default function Home({ appBarHeight }) {
   const classes = useStyles()
   return (
     <div className={classes.root}>
       <Grid container direction="row" justify="center" alignItems="flex-start" spacing={0}>
         <Grid container item xs={12} spacing={0}>
-          <MainTile />
+          <MainTile appBarHeight={appBarHeight} />
         </Grid>
         <Grid item xs={12} className={classes.icons}>
           <Icons />

@@ -1,10 +1,10 @@
-import { Button, Typography } from '@material-ui/core'
-import MenuItem from '@material-ui/core/MenuItem'
-import Select from '@material-ui/core/Select'
-import { makeStyles } from '@material-ui/core/styles'
-import TextField from '@material-ui/core/TextField'
-import { React, useState } from 'react'
-import axios from 'axios'
+import { Button, Typography } from '@material-ui/core';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import { React, useState } from 'react';
+import axios from 'axios';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -42,52 +42,53 @@ const useStyles = makeStyles(theme => ({
     },
   },
   submit: {},
-}))
+}));
 
 export default function App() {
-  const classes = useStyles()
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [phoneNumber, setPhoneNumber] = useState('')
-  const [roof, setRoof] = useState('')
-  const [nameError, setNameError] = useState(false)
-  const [phoneNumberError, setPhoneNumberError] = useState(false)
-  const [emailError, setEmailError] = useState(false)
-  const [roofError, setRoofError] = useState(false)
+  const classes = useStyles();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [roof, setRoof] = useState('');
+  const [nameError, setNameError] = useState(false);
+  const [phoneNumberError, setPhoneNumberError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [roofError, setRoofError] = useState(false);
 
   const clear = () => {
-    setName('')
-    setEmail('')
-    setPhoneNumber('')
-    setRoof('')
-  }
+    setName('');
+    setEmail('');
+    setPhoneNumber('');
+    setRoof('');
+  };
   const validateForm = () => {
-    let isValid = true
+    console.log('validating', phoneNumber, phoneNumber.length);
+    let isValid = true;
     if (name === '') {
-      setNameError(true)
-      isValid = false
+      setNameError(true);
+      isValid = false;
     }
-    if (phoneNumber === '' || phoneNumber <= '9') {
-      setPhoneNumberError(true)
-      isValid = false
+    if (phoneNumber === '' || phoneNumber <= 9) {
+      setPhoneNumberError(true);
+      isValid = false;
     }
     if (email === '') {
-      setEmailError(true)
-      isValid = false
+      setEmailError(true);
+      isValid = false;
     }
     if (roof === '') {
-      setRoofError(true)
-      isValid = false
+      setRoofError(true);
+      isValid = false;
     }
-    return isValid
-  }
+    return isValid;
+  };
   const handleSubmit = async () => {
     if (validateForm()) {
-      const payload = { name, email, phoneNumber, roofType: roof }
-      await axios.post('http://127.0.0.1:5001/dev/request', payload)
-      clear()
+      const payload = { name, email, phoneNumber, roofType: roof };
+      await axios.post('http://127.0.0.1:5001/dev/request', payload);
+      clear();
     }
-  }
+  };
 
   return (
     <div className={classes.root}>
@@ -105,8 +106,8 @@ export default function App() {
         helperText={nameError ? 'Name Is Required' : ''}
         placeholder={'Name...'}
         onChange={e => {
-          setName(e.target.value)
-          setNameError(false)
+          setName(e.target.value);
+          setNameError(false);
         }}
       />
       <TextField
@@ -117,8 +118,8 @@ export default function App() {
         helperText={emailError ? 'Email Is Required' : ''}
         error={emailError}
         onChange={e => {
-          setEmail(e.target.value)
-          setEmailError(false)
+          setEmail(e.target.value);
+          setEmailError(false);
         }}
       />
       <TextField
@@ -129,8 +130,8 @@ export default function App() {
         value={phoneNumber}
         placeholder={'Phone Number...'}
         onChange={e => {
-          setPhoneNumber(e.target.value)
-          setPhoneNumberError(false)
+          setPhoneNumber(e.target.value);
+          setPhoneNumberError(false);
         }}
       />
 
@@ -142,8 +143,8 @@ export default function App() {
         placeholder={'Im Interested In...'}
         value={roof}
         onChange={e => {
-          setRoof(e.target.value)
-          setPhoneNumberError(false)
+          setRoof(e.target.value);
+          setRoofError(false);
         }}
       >
         <MenuItem value={'new'}>New Roof</MenuItem>
@@ -154,5 +155,5 @@ export default function App() {
         Submit Now!
       </Button>
     </div>
-  )
+  );
 }

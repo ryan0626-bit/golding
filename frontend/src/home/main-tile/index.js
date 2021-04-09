@@ -5,7 +5,7 @@ import Intro from './Intro'
 import Request from './Request'
 
 const useStyles = makeStyles(theme => ({
-  background: {
+  background: ({ appBarHeight }) => ({
     backgroundImage: `url(${HomeRoof})`,
     position: 'relative',
     minHeight: '100vh',
@@ -13,10 +13,9 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    [theme.breakpoints.down('sm')]: {
-      paddingTop: '3rem',
-    },
-  },
+    paddingTop: appBarHeight,
+    [theme.breakpoints.down('sm')]: {},
+  }),
   backgroundOverlay: {
     position: 'absolute',
     top: 0,
@@ -70,8 +69,8 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Index() {
-  const classes = useStyles()
+export default function Index({ appBarHeight }) {
+  const classes = useStyles({ appBarHeight })
 
   return (
     <div className={classes.background}>

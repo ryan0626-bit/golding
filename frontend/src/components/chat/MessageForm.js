@@ -1,10 +1,10 @@
-import Box from '@material-ui/core/Box'
-import Button from '@material-ui/core/Button'
-import { makeStyles } from '@material-ui/core/styles'
-import TextField from '@material-ui/core/TextField'
-import Typography from '@material-ui/core/Typography'
-import ChatIcon from '@material-ui/icons/Chat'
-import React, { useState } from 'react'
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import ChatIcon from '@material-ui/icons/Chat';
+import React, { useState } from 'react';
 
 const useStyles = makeStyles(theme => ({
   bottomMessageBox: {
@@ -53,41 +53,43 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.primary.light,
     borderRadius: '1rem 1rem 1rem 0 ',
   },
-}))
+}));
 export default function MessageForm({ handleSubmit }) {
-  const classes = useStyles()
-  const [phoneNumber, setPhoneNumber] = useState('')
-  const [message, setMessage] = useState('')
-  const [name, setName] = useState('')
-  const [nameError, setNameError] = useState(false)
-  const [phoneNumberError, setPhoneNumberError] = useState(false)
-  const [messageError, setMessageError] = useState(false)
+  const classes = useStyles();
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [message, setMessage] = useState('');
+  const [name, setName] = useState('');
+  const [nameError, setNameError] = useState(false);
+  const [phoneNumberError, setPhoneNumberError] = useState(false);
+  const [messageError, setMessageError] = useState(false);
 
   const validateInput = () => {
-    let isValid = true
+    console.log('validate');
+    let isValid = true;
     if (name === '') {
-      setNameError(true)
-      isValid = false
+      setNameError(true);
+      isValid = false;
     }
+    console.log('phone', phoneNumber.length);
     if (phoneNumber === '' || phoneNumber.length <= '9') {
-      setPhoneNumberError(true)
-      isValid = false
+      setPhoneNumberError(true);
+      isValid = false;
     }
     if (message === '') {
-      setMessageError(true)
-      isValid = false
+      setMessageError(true);
+      isValid = false;
     }
-    return isValid
-  }
+    return isValid;
+  };
   const handleText = async () => {
     if (validateInput()) {
-      const payload = { name, phoneNumber, message }
-      await handleSubmit(payload)
-      setName('')
-      setPhoneNumber('')
-      setMessage('')
+      const payload = { name, phoneNumber, message };
+      await handleSubmit(payload);
+      setName('');
+      setPhoneNumber('');
+      setMessage('');
     }
-  }
+  };
 
   return (
     <>
@@ -97,7 +99,7 @@ export default function MessageForm({ handleSubmit }) {
       </div>
       <div>
         <div className={classes.messageInfo}>
-          <Typography variant="p">
+          <Typography>
             Enter your information below and
             <br /> our team will text you shortly.
           </Typography>
@@ -114,8 +116,8 @@ export default function MessageForm({ handleSubmit }) {
           label="Name"
           className={classes.textField}
           onChange={e => {
-            setName(e.target.value)
-            setNameError(false)
+            setName(e.target.value);
+            setNameError(false);
           }}
         />
         <TextField
@@ -127,14 +129,14 @@ export default function MessageForm({ handleSubmit }) {
           value={phoneNumber}
           className={classes.textField}
           onChange={e => {
-            setPhoneNumber(e.target.value)
-            setPhoneNumberError(false)
+            setPhoneNumber(e.target.value);
+            setPhoneNumberError(false);
           }}
         />
         <TextField
           onChange={e => {
-            setMessage(e.target.value)
-            setMessageError(false)
+            setMessage(e.target.value);
+            setMessageError(false);
           }}
           helperText={messageError ? 'A Message Is Required' : ''}
           placeholder="Message..."
@@ -159,7 +161,7 @@ export default function MessageForm({ handleSubmit }) {
 
         <Button
           onClick={() => {
-            handleText()
+            handleText();
           }}
           className={classes.send}
           color="primary"
@@ -170,5 +172,5 @@ export default function MessageForm({ handleSubmit }) {
         </Button>
       </div>
     </>
-  )
+  );
 }

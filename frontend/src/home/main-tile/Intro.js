@@ -1,11 +1,11 @@
-import Button from '@material-ui/core/Button'
-import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
-import React from 'react'
-import Seprator from '../../components/Seprator'
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import React from 'react';
+import Seprator from '../../components/Seprator';
 const useStyles = makeStyles(theme => ({
   root: {
-    marginTop: '3rem',
+    marginTop: '5rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
@@ -70,19 +70,17 @@ const useStyles = makeStyles(theme => ({
     flexShrink: 0,
     color: 'white',
   },
-}))
+}));
 
 export default function Intro() {
-  const classes = useStyles()
+  const classes = useStyles();
   const handleCallNow = () => {
-    window.location.href = 'tel:202-430-0948'
-  }
+    window.location.href = 'tel:202-430-0948';
+  };
   return (
     <div className={classes.root}>
       <div className={classes.licenseBackground}>
-        <Typography variant="p" className={classes.license}>
-          LICENSE #123456
-        </Typography>
+        <Typography className={classes.license}>LICENSE #123456</Typography>
       </div>
 
       <Typography className={classes.solve} variant="h5">
@@ -106,5 +104,5 @@ export default function Intro() {
         Call Us Now!
       </Button>
     </div>
-  )
+  );
 }
