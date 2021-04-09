@@ -62,7 +62,6 @@ export default function App() {
     setRoof('');
   };
   const validateForm = () => {
-    console.log('validating', phoneNumber, phoneNumber.length);
     let isValid = true;
     if (name === '') {
       setNameError(true);
