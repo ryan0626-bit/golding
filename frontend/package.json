@@ -21,7 +21,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "cross-env REACT_APP_IS_LOCAL=true react-scripts start",
+    "start": "cross-env REACT_APP_IS_LOCAL=true cross-env REACT_APP_STAGE=develop react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

@@ -6,7 +6,7 @@ const sns = new SNS();
 export const sendEmail = async ({ name = '', email = '', phoneNumber = '', message = '' }) => {
   const params = {
     Destination: {
-      ToAddresses: ['ryan.weaver718@gmail.com', 'ryan062692@gmail.com'],
+      ToAddresses: ['ryan.weaver718@gmail.com'],
     },
     Content: {
       Simple: {
