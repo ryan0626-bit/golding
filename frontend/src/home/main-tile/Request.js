@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { React, useState } from 'react';
 import axios from 'axios';
+import { sendRequest } from '../../api';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -84,7 +85,7 @@ export default function App() {
   const handleSubmit = async () => {
     if (validateForm()) {
       const payload = { name, email, phoneNumber, roofType: roof };
-      await axios.post('http://127.0.0.1:5001/dev/request', payload);
+      await sendRequest(payload);
       clear();
     }
   };

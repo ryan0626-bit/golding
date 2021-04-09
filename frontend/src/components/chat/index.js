@@ -1,12 +1,12 @@
-import Box from '@material-ui/core/Box'
-import ClickAwayListener from '@material-ui/core/ClickAwayListener'
-import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
-import ChatIcon from '@material-ui/icons/Chat'
-import CheckCircleIcon from '@material-ui/icons/CheckCircle'
-import axios from 'axios'
-import React, { useState } from 'react'
-import MessageForm from './MessageForm'
+import Box from '@material-ui/core/Box';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import ChatIcon from '@material-ui/icons/Chat';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import React, { useState } from 'react';
+import { sendText } from '../../api';
+import MessageForm from './MessageForm';
 
 const useStyles = makeStyles(theme => ({
   bottomNavigation: {
@@ -79,20 +79,18 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     margin: '1rem',
   },
-}))
+}));
 export default function BottomChat() {
-  const classes = useStyles()
-  const [showBox, setShowBox] = useState(false)
-  const handleShowBox = () => void setShowBox(true)
-  const handleHideBox = () => void setShowBox(false)
-  const [showSuccess, setShowSuccess] = useState(false)
+  const classes = useStyles();
+  const [showBox, setShowBox] = useState(false);
+  const handleShowBox = () => void setShowBox(true);
+  const handleHideBox = () => void setShowBox(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleSubmit = async payload => {
-    await axios.post('http://127.0.0.1:5001/dev/text', payload)
-
-    setShowSuccess(true)
-    // handleHideBox();
-  }
+    await sendText(payload);
+    setShowSuccess(true);
+  };
 
   return (
     <div className={classes.bottomNavigation}>
@@ -125,5 +123,5 @@ export default function BottomChat() {
         <ChatIcon className={classes.chatIcon} classes={{ root: { padding: 0 } }} />
       </Box>
     </div>
-  )
+  );
 }

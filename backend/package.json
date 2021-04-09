@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "serverless offline start --host 127.0.0.1 --http-port 5001"
+    "start": "NODE_ENV=develop serverless offline start --host 127.0.0.1 --http-port 5001",
+    "deploy": "NODE_ENV=develop serverless deploy --stage develop"
   },
   "author": "ryan sulewski",
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.834.0",
+    "cross-env": "^7.0.3",
     "dynamoose": "^2.5.0",
     "lodash": "^4.17.20",
     "uuid": "^8.3.2"

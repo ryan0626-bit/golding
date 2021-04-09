@@ -1,26 +1,26 @@
 service: golding
-frameworkVersion: "2"
+frameworkVersion: '2'
 custom:
   webpack:
-    webpackConfig: "./webpack.config.js"
+    webpackConfig: './webpack.config.js'
     includeModuels: true
 provider:
   name: aws
-  region: us-east-2
+  region: us-east-1
   runtime: nodejs12.x
   iamRoleStatments:
-    - Effect: "Allow"
+    - Effect: 'Allow'
       Action:
-        - "dynamodb:*"
-      Resource: "*"
-    - Effect: "Allow"
+        - 'dynamodb:*'
+      Resource: '*'
+    - Effect: 'Allow'
       Action:
-        - "ses:sendEmail"
-      Resource: "*"
-    - Effect: "Allow"
+        - 'ses:sendEmail'
+      Resource: '*'
+    - Effect: 'Allow'
       Action:
-        - "sns:publish"
-      Resource: "*"
+        - 'sns:publish'
+      Resource: '*'
 
 functions:
   createUserItem:
@@ -37,7 +37,6 @@ functions:
           path: /text
           method: post
           cors: true
-
 
 plugins:
   - serverless-webpack
