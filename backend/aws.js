@@ -6,7 +6,7 @@ const sns = new SNS();
 export const sendEmail = async ({ name = '', email = '', phoneNumber = '', message = '' }) => {
   const params = {
     Destination: {
-      ToAddresses: ['goldingcompanies@gmail.com'],
+      ToAddresses: ['goldingcompanies@gmail.com', 'info@goldingcompanies.com'],
     },
     Content: {
       Simple: {
@@ -26,7 +26,7 @@ export const sendEmail = async ({ name = '', email = '', phoneNumber = '', messa
       },
     },
 
-    FromEmailAddress: 'ryan.weaver718@gmail.com',
+    FromEmailAddress: 'info@goldingcompanies.com',
   };
 
   const { MessageId } = await ses.sendEmail(params).promise();
@@ -34,9 +34,11 @@ export const sendEmail = async ({ name = '', email = '', phoneNumber = '', messa
 };
 
 export const sendText = async ({ name = '', email = '', phoneNumber = '', message = '' }) => {
+  const PhoneNumber = '+13017889827';
+  // const PhoneNumber = '+12024300948';
   const params = {
     Message: `${name} requested contact their email: ${email}, phone: ${phoneNumber}, message: ${message}`,
-    PhoneNumber: '+12024300948',
+    PhoneNumber,
   };
   const { MessageId } = await sns.publish(params).promise();
 
