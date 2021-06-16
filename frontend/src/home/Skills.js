@@ -2,7 +2,7 @@ import { Typography } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
-import roof from '../images/roof.jpg';
+import roof from '../images/RoofFinal.jpg';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -104,15 +104,10 @@ export default function Skill() {
               <div className={classes.header}>Why People Choose Us?</div>
             </Typography>
             <div className={classes.body}>
-              Golding provide superior services and protection for your home or business at an
-              affordable price through quality workmanship, long-lasting materials, and exceptional
-              customer service.
-            </div>
-
-            <div className={classes.body2}>
-              Whether your roof needs repair, maintenance services, or replacement, our roofing
-              professionals have the knowledge and expertise to complete the job in a timely manner
-              and to your satisfaction.
+              We make roofing through insurance as simple as possible for homeowners. We assist
+              throughout the whole claims process and represent you to your insurance provider to
+              advocate for a new roof. Find out for yourself by getting a free inspection from one
+              of our trained roof specialists.
             </div>
           </Typography>
         </Paper>

@@ -1,5 +1,5 @@
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
-import React from 'react'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import React from 'react';
 
 const palette = {
   // type: '',
@@ -60,24 +60,24 @@ const palette = {
     light: '#166B8B',
     dark: '#2A2A2A',
   },
-}
+};
 
 const mixins = {
   shadow: dist => {
-    dist = dist ?? 2
+    dist = dist ?? 2;
     return {
       boxShadow: `-${dist}px ${dist}px ${dist * 3}px #000d`,
-    }
+    };
   },
   borderRadius: radius => {
-    radius = radius ?? 4
+    radius = radius ?? 4;
     return {
       borderRadius: `${radius}px`,
-    }
+    };
   },
   circleHover: (radius, color) => {
-    color = color ?? palette.primary.main
-    radius = radius ?? '0.5rem'
+    color = color ?? palette.primary.main;
+    radius = radius ?? '0.5rem';
 
     return {
       '&::before': {
@@ -94,16 +94,16 @@ const mixins = {
       '&:hover::before': {
         backgroundColor: color || palette.primary.main,
       },
-    }
+    };
   },
-}
+};
 
 const typography = {
   fontFamily: '"Arial", Roboto, tahoma, sans-serif',
   default: {
     color: palette.secondary.main,
   },
-}
+};
 
 const theme = createMuiTheme({
   typography,
@@ -210,8 +210,8 @@ const theme = createMuiTheme({
     brandingHeight: 6, // rem units
     gutter: '1.5rem',
   },
-})
+});
 
 export default function AppTheme({ children }) {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }

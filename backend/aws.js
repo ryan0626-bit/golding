@@ -6,17 +6,23 @@ const sns = new SNS();
 export const sendEmail = async ({ name = '', email = '', phoneNumber = '', message = '' }) => {
   const params = {
     Destination: {
-      ToAddresses: ['goldingcompanies@gmail.com', 'info@goldingcompanies.com'],
+      ToAddresses: process.env.IS_OFFLINE
+        ? ['ryan.weaver718@gmail.com']
+        : ['goldingcompanies@gmail.com', 'info@goldingcompanies.com'],
     },
     Content: {
       Simple: {
         Body: {
           Html: {
-            Data: `<div style="display:flex; flex-direction=column">
-                    <div>Name: ${name}</div>
-                    <div>Email: ${email}</div>
-                    <div>Phone: ${phoneNumber}</div>
-                    <div>Message: ${message}</div>
+            Data: `<div style="display: flex; flex-direction: column">
+                    ${[
+                      `Name: ${name}`,
+                      `Email: ${email}`,
+                      `Phone: ${phoneNumber}`,
+                      `Message: ${message}`,
+                    ]
+                      .map(text => `<div>${text}</div><br/>`)
+                      .join('')}
                   </div>`,
           },
         },
@@ -26,7 +32,9 @@ export const sendEmail = async ({ name = '', email = '', phoneNumber = '', messa
       },
     },
 
-    FromEmailAddress: 'info@goldingcompanies.com',
+    FromEmailAddress: process.env.IS_OFFLINE
+      ? 'ryan.weaver718@gmail.com'
+      : 'info@goldingcompanies.com',
   };
 
   const { MessageId } = await ses.sendEmail(params).promise();
@@ -34,8 +42,7 @@ export const sendEmail = async ({ name = '', email = '', phoneNumber = '', messa
 };
 
 export const sendText = async ({ name = '', email = '', phoneNumber = '', message = '' }) => {
-  const PhoneNumber = '+13017889827';
-  // const PhoneNumber = '+12024300948';
+  const PhoneNumber = process.env.IS_OFFLINE ? '+13017889827' : '+12024300948';
   const params = {
     Message: `${name} requested contact their email: ${email}, phone: ${phoneNumber}, message: ${message}`,
     PhoneNumber,

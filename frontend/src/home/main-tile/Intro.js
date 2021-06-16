@@ -80,7 +80,7 @@ export default function Intro() {
   return (
     <div className={classes.root}>
       <div className={classes.licenseBackground}>
-        <Typography className={classes.license}>LICENSE #123456</Typography>
+        <Typography className={classes.license}>MHIC #141965</Typography>
       </div>
 
       <Typography className={classes.solve} variant="h5">

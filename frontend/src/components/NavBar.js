@@ -1,16 +1,16 @@
-import IconButton from '@material-ui/core/IconButton'
-import Menu from '@material-ui/core/Menu'
-import MenuItem from '@material-ui/core/MenuItem'
-import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import MenuIcon from '@material-ui/icons/Menu'
-import clsx from 'clsx'
-import React from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
-import useAtTop from '../hooks/useAtTop'
-import Logo from '../images/Logo.png'
-import WhiteLogo from '../images/LogoWhite.png'
+import IconButton from '@material-ui/core/IconButton';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import MenuIcon from '@material-ui/icons/Menu';
+import clsx from 'clsx';
+import React from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+import useAtTop from '../hooks/useAtTop';
+import Logo from '../images/Logo.png';
+import WhiteLogo from '../images/LogoWhite.png';
 const useStyles = makeStyles(theme => ({
   paper: {
     textAlign: 'center',
@@ -81,29 +81,29 @@ const useStyles = makeStyles(theme => ({
       cursor: 'pointer',
     },
   }),
-}))
+}));
 
 export default function NavBar() {
-  const history = useHistory()
-  const [anchorEl, setAnchorEl] = React.useState(null)
-  const atTop = useAtTop()
-  const isHome = useLocation().pathname === '/'
-  const classes = useStyles({ atTop, isHome })
-  const xs = useMediaQuery(theme => theme.breakpoints.only('xs'))
+  const history = useHistory();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const atTop = useAtTop();
+  const isHome = useLocation().pathname === '/';
+  const classes = useStyles({ atTop, isHome });
+  const xs = useMediaQuery(theme => theme.breakpoints.only('xs'));
 
   const handleClose = () => {
-    setAnchorEl(null)
-  }
+    setAnchorEl(null);
+  };
   const handleOpen = event => {
-    setAnchorEl(event.currentTarget)
-  }
+    setAnchorEl(event.currentTarget);
+  };
   const openPage = page => {
-    history.push(`/${page}`)
-    handleClose()
-  }
+    history.push(`/${page}`);
+    handleClose();
+  };
   const handleCallNow = () => {
-    window.location.href = 'tel:202-430-0948'
-  }
+    window.location.href = 'tel:202-430-0948';
+  };
 
   return (
     <div className={clsx(classes.paper, classes.root)}>
@@ -118,7 +118,7 @@ export default function NavBar() {
 
       <div style={{ flexGrow: 1 }} />
       <div className={classes.bigScreen}>
-        <Typography variant="h6" className={classes.route} onClick={() => openPage('profile')}>
+        {/* <Typography variant="h6" className={classes.route} onClick={() => openPage('profile')}>
           Home
         </Typography>
         <Typography variant="h6" className={classes.route} onClick={() => openPage('account')}>
@@ -126,7 +126,7 @@ export default function NavBar() {
         </Typography>
         <Typography variant="h6" className={classes.route} onClick={() => openPage('about')}>
           About
-        </Typography>
+        </Typography> */}
       </div>
       <div className={classes.smallScreen}>
         <div className={classes.navButton}>
@@ -142,12 +142,12 @@ export default function NavBar() {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={() => openPage('profile')}>Profile</MenuItem>
-          <MenuItem onClick={() => openPage('account')}>My account</MenuItem>
-          <MenuItem onClick={() => openPage('about')}>About</MenuItem>
+          {/* <MenuItem onClick={() => openPage('profile')}>Profile</MenuItem> */}
+          {/* <MenuItem onClick={() => openPage('account')}>My account</MenuItem> */}
+          {/* <MenuItem onClick={() => openPage('about')}>About</MenuItem> */}
           <MenuItem onClick={handleCallNow}>Call Now</MenuItem>
         </Menu>
       </div>
     </div>
-  )
+  );
 }
