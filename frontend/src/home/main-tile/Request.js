@@ -92,9 +92,9 @@ export default function App() {
   return (
     <div className={classes.root}>
       <div className={classes.estimate}>
-        <Typography variant="h4">Get An Estimate</Typography>
+        <Typography variant="h4">Free Inspection </Typography>
         <div>
-          <Typography>Need to know how much your cost?</Typography>
+          <Typography>Want to know your options?</Typography>
         </div>
       </div>
       <TextField

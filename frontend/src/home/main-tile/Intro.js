@@ -91,7 +91,8 @@ export default function Intro() {
       </Typography>
       <Seprator remWidth="5" />
       <Typography className={classes.textStyle} variant="h6">
-        The best customer service in the business, no joke! Check it out by yourself right now.
+        Does your roof look old or have visible damage? Find out if you qualify for a new roof
+        through your insurance provider.
       </Typography>
 
       <Button
